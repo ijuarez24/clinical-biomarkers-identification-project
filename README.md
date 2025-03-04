@@ -30,10 +30,11 @@ clinical-biomarkers-identification-project/
 └── README.md
 ````
 
-## 1. Synthetic data base
+## Synthetic data base
 
 
-## 2. Real data base
+## Real data base 
+
 
 ### Data visualization 
 
