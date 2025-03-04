@@ -76,21 +76,75 @@ This project demonstrates the potential of machine learning in advancing colorec
 
 ## Real Data Base 
 
+### Overview
 
-### Data Visualization 
+This chapter focuses on analyzing publicly available datasets related to colorectal cancer. The objective is to preprocess and visualize the data, implement machine learning (ML) models, and extract insights about genetic factors associated with treatment resistance, tumor recurrence, and patient survival.
+
+### Dataset Description
+
+Two datasets were used:
+
+- Colorectal Cancer Clinical Data: Contains information from 62 patients who underwent tumor resection, including age, Dukes staging, tumor location, treatment details, and disease-free survival (DFS).
+
+- Gene Expression Data: Includes gene expression levels for approximately 2000 genes in the same patients, preprocessed using a log₂ transformation.
+
+### Data Preprocessing and Visualization
+
+The first step involved visualizing clinical data distributions through histograms, density plots, and boxplots. Key insights include:
+
+- Most patients are in intermediate Dukes stages (B or C).
+
+- The average age is 61 years, with DFS varying widely from 4 to 108 months.
+
+- Treatment distribution for chemotherapy and radiotherapy was balanced.
+
+For gene expression data, a heatmap with hierarchical clustering was used to explore gene variation across patients. Principal Component Analysis (PCA) was applied to reduce dimensionality, retaining 20 components that explain 71% of the variance.
+
+### Machine Learning Implementation
+
+ML models were trained to predict DFS event (whether a patient experienced disease recurrence or death). The steps included:
+
+- Merging clinical and gene expression data.
+
+- Encoding categorical variables.
+
+- Splitting data into training (80%) and testing (20%) sets.
+
+- Implementing supervised learning models:
+
+      - Logistic Regression (interpretable and widely used in medicine).
+
+      - Support Vector Machine (SVM) (captures complex relationships).
+
+      - Random Forest (robust to noise and handles high-dimensional data).
 
 
-### PCA
+### Model Performance Evaluation
 
+Models were compared based on accuracy, precision, recall, F1-score, and AUC (Area Under the Curve). Key findings:
 
-### Machine Learning Algorithms Implementation 
+- Random Forest had the highest overall accuracy and F1-score.
 
+- Logistic Regression was the most interpretable, making it valuable for clinical decision-making.
 
-### Results 
+- SVM demonstrated strong discrimination capabilities but required more computational resources.
+
+### Conclusion and Future Steps
+
+This study demonstrates the potential of ML in colorectal cancer prognosis by integrating clinical and genomic data. Future work could involve:
+
+- Refining models with hyperparameter tuning.
+
+- Expanding datasets to improve generalizability.
+
+- Applying deep learning techniques for enhanced predictive accuracy.
+
+By leveraging bioinformatics and AI, this approach contributes to precision medicine, supporting personalized treatment strategies for colorectal cancer patients.
+
 
 
 ## Current Status 
-This project is currently completed, waiting for final evaluations.
+This project is currently completed. 
 
 ## Contact
 - [LinkedIn Profile](https://www.linkedin.com/in/inmaculadajuarez)
