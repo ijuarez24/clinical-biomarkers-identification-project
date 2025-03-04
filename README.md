@@ -58,15 +58,15 @@ The following machine learning models were implemented:
 - Logistic Regression
 - Support Vector Machine (SVM)
 - Random Forest
-- 
+  
 Performance metrics used: Accuracy, F1-score, AUC, Recall, and Precision. Hyperparameter tuning was also explored to improve predictive accuracy.
 
 ### Predictions
 Once trained, the models can be used to assess new patients:
 
-Probability < 0.5 → Good prognosis
-Probability > 0.5 → Poor prognosis
-Probability ≈ 0.5 → Uncertain prognosis
+- Probability < 0.5 → Good prognosis
+- Probability > 0.5 → Poor prognosis
+- Probability ≈ 0.5 → Uncertain prognosis
 
 ### Conclusion
 While the dataset is synthetic, this approach can be applied in real medical settings. With improved data quality, hospitals could develop databases for personalized medicine, enabling genetic screening for patients at risk and optimizing treatment strategies.
