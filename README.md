@@ -16,7 +16,8 @@ Key aspects of this project include:
 - Implementation of machine learning models to evaluate and predict the prognosis of the disease.
 
 ## Project Structure 
-```clinical-biomarkers-identification-project/
+```
+clinical-biomarkers-identification-project/
 │
 ├── data/
 │ ├── gene-expression-data.csv
@@ -26,8 +27,8 @@ Key aspects of this project include:
 │ ├── database-sintetica.py
 │ ├── import-data.py
 │ ├── database-real.py
-└── README.md```
-
+└── README.md
+````
 
 ## 1. Synthetic data base
 
