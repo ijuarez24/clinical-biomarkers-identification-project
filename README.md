@@ -3,16 +3,16 @@
 This repository contains the code and resources for my Master's Thesis project in Bioinformatics. The focus of this project is the identification of clinical markers in colorectal cancer. 
 
 ## Table of Contents
-·[General Information](#General Information)
-·[Project Structure](#Project Structure)
-·[Synthetic Data Base](#Synthetic Data Base)
-·[Real Data Base]
-·[Data Visualization]
-·[PCA]
-·[Machine Learning Algorithms Implementation] 
-·[Results]
-·[Current Statuts]
-·[Contact]
+- [General Information](#general-information)
+- [Project Structure](#project-structure)
+- [Synthetic Data Base](#synthetic-data-base)
+- [Real Data Base](#real-data-base)
+- [Data Visualization](#data-visualization)
+- [PCA](#pca)
+- [Machine Learning Algorithms Implementation](#machine-learning-algorithms-implementation)
+- [Results](#results)
+- [Current Status](#current-status)
+- [Contact](#contact)
 
 
 
