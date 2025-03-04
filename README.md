@@ -14,13 +14,14 @@ Key aspects of this project include:
 
 
 ## General Information
+## Project Structure 
 
 
 
-## Synthetic data base
+## 1. Synthetic data base
 
 
-## Real data base
+## 2. Real data base
 
 ### Data visualization 
 
