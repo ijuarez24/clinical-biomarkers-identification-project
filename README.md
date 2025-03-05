@@ -40,7 +40,7 @@ clinical-biomarkers-identification-project/
 
 ## Synthetic Data Base
 
-This project applies supervised learning models to predict the prognosis of colorectal cancer based on clinical data, specifically focusing on genetic mutations associated with the disease. The code for this analysis is available in ```synthetic-data.py```
+This project applies supervised learning models to predict the prognosis of colorectal cancer based on clinical data, specifically focusing on genetic mutations associated with the disease. The code for this analysis is available in ```synthetic-data.py```.
 
 ### Overview
 A synthetic dataset was created for this study, including patient demographics and key clinical biomarkers. The dataset simulates real-world scenarios to evaluate different machine learning models. The biomarkers considered include:
@@ -88,13 +88,13 @@ This chapter focuses on analyzing publicly available datasets related to colorec
 
 Two datasets were used:
 
-- Colorectal Cancer Clinical Data: Contains information from 62 patients who underwent tumor resection, including age, Dukes staging, tumor location, treatment details, and disease-free survival (DFS).
+- Colorectal Cancer Clinical Data: Contains information from 62 patients who underwent tumor resection, including age, Dukes staging, tumor location, treatment details, and disease-free survival (DFS) → ```colorecta-cancer-data.csv```.
 
-- Gene Expression Data: Includes gene expression levels for approximately 2000 genes in the same patients, preprocessed using a log₂ transformation.
+- Gene Expression Data: Includes gene expression levels for approximately 2000 genes in the same patients, preprocessed using a log₂ transformation → ```gene-expression-data.csv```. 
 
 ### Data Preprocessing and Visualization
 
-The first step involved visualizing clinical data distributions through histograms, density plots, and boxplots. The code for this analysis is available in ```import-data.py```
+The first step involved visualizing clinical data distributions through histograms, density plots, and boxplots. The code for this analysis is available in ```import-data.py```.
  Key insights include:
 
 - Most patients are in intermediate Dukes stages (B or C).
@@ -103,7 +103,7 @@ The first step involved visualizing clinical data distributions through histogra
 
 - Treatment distribution for chemotherapy and radiotherapy was balanced.
 
-For gene expression data, a heatmap with hierarchical clustering was used to explore gene variation across patients. Principal Component Analysis (PCA) was applied to reduce dimensionality, retaining 20 components that explain 71% of the variance. (script: ```pca-variance.py)```
+For gene expression data, a heatmap with hierarchical clustering was used to explore gene variation across patients. Principal Component Analysis (PCA) was applied to reduce dimensionality, retaining 20 components that explain 71% of the variance (script: ```pca-variance.py)```.
 
 ### Machine Learning Implementation
 
@@ -148,7 +148,7 @@ By leveraging bioinformatics and AI, this approach contributes to precision medi
 
 
 ## Genetic Analysis
-As a final step, an analysis was performed to identify which PCA components are most correlated with key clinical variables: treatment resistance ("Adj_Chem") and disease relapse ("DFS event"). The goal was to extract the genes that contribute most to these principal components, potentially identifying those involved in relevant biological processes. The code for this analysis is available in ```genetic-analysis.py```
+As a final step, an analysis was performed to identify which PCA components are most correlated with key clinical variables: treatment resistance ("Adj_Chem") and disease relapse ("DFS event"). The goal was to extract the genes that contribute most to these principal components, potentially identifying those involved in relevant biological processes. The code for this analysis is available in ```genetic-analysis.py```.
 
 Since gene IDs (e.g., 1552309_a_at) do not correspond directly to gene names, further annotation is required using official databases such as UniProt or PubMed. Due to data limitations, precise gene identification remains uncertain.
 
