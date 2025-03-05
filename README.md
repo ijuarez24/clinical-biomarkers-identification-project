@@ -18,16 +18,6 @@ This project follows a structured workflow to process, analyze, and interpret  c
 - **Machine Learning** (Logistic Regression, SVM, Random Forest)  
 - **Dimensionality Reduction** (PCA)  
 
-### Pipeline Diagram  
-
-```mermaid
-graph TD;
-    A[Raw Data: gene-expression-data.csv & colorectal-cancer-data.csv] --> B[Data Visualization & Cleaning (Pandas)]
-    B --> C[Principal Component Analysis (PCA)]
-    C --> D[ML Model Implementation]
-    D --> E[Results Interpretation]
-    E --> F[Conclusions & Insights]
-```
 
 
 ## Table of Contents
