@@ -5,8 +5,8 @@ This repository contains the code and resources for my Master's Thesis project i
 ## Table of Contents
 - [General Information](#general-information)
 - [Project Structure](#project-structure)
-- [Synthetic Data Base](#synthetic-data-base)
-- [Real Data Base](#real-data-base)
+- [Synthetic Dataset](#synthetic-data-base)
+- [Real Dataset](#real-data-base)
 - [Genetic Analysis](#genetic-analysis)
 - [Current Status](#current-status)
 - [Contact](#contact)
@@ -38,7 +38,7 @@ clinical-biomarkers-identification-project/
 └── README.md
 ````
 
-## Synthetic Data Base
+## Synthetic Dataset
 
 This project applies supervised learning models to predict the prognosis of colorectal cancer based on clinical data, specifically focusing on genetic mutations associated with the disease. The code for this analysis is available in ```synthetic-data.py```.
 
@@ -78,7 +78,7 @@ While the dataset is synthetic, this approach can be applied in real medical set
 This project demonstrates the potential of machine learning in advancing colorectal cancer prognosis and personalized healthcare.
 
 
-## Real Data Base 
+## Real Dataset
 
 ### Overview
 
