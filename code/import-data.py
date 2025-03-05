@@ -145,17 +145,17 @@ def combine_datasets(clinical_data, gene_data):
     Combine clinical data with gene expression data using the 'ID_REF' column.
     
     Returns:
-        combined_df (pd.DataFrame)
+        df_final (pd.DataFrame)
     """
     gene_data_indexed = gene_data.set_index('ID_REF')
-    combined_df = clinical_data.join(gene_data_indexed, on='ID_REF', how='left')
-    print(combined_df.info())
-    combined_df.to_csv("combined_data.csv", index=False, encoding='utf-8')
-    return combined_df
+    df_final = clinical_data.join(gene_data_indexed, on='ID_REF', how='left')
+    print(df_final.info())
+    df_final.to_csv("df_final.csv", index=False, encoding='utf-8')
+    return df_final
 
 
 def main():
-    # Define file paths (update as needed)
+    # Define file paths 
     clinical_path = "/colorectal-cancer-data.csv"
     gene_path = "/gene-expression-data.csv"
     
