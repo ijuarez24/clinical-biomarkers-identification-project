@@ -71,8 +71,8 @@ def plot_variance(df_expl):
     plt.show()
 
 def main():
-    # Define the path to the gene expression CSV file (update as needed)
-    gene_expression_path = "C:/Users/HP/Documents/Master UNIR/TFM/database/gene_expression_data_t.csv"
+    # Define the path to the gene expression CSV file 
+    gene_expression_path = "/gene_expression_data.csv"
     
     # Perform PCA and plot variance metrics
     pca, df_expl = perform_pca(gene_expression_path)
