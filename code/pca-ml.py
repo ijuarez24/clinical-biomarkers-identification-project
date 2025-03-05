@@ -101,7 +101,7 @@ def ml_modeling_with_pca(final_data, gene_expression_features, n_components=20):
 
 def main():
     # Define the path to the final combined data CSV file (update as needed)
-    final_data_path = "C:/Users/HP/Documents/Master UNIR/TFM/datbase/df_final.csv"
+    final_data_path = "/df_final.csv"
     df_final = pd.read_csv(final_data_path)
     df_final = df_final.dropna()
     
