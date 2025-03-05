@@ -1,200 +1,188 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sat Feb  8 10:14:54 2025
 
-@author: HP
+ #!/usr/bin/env python3
 """
-
+Module: import_data.py
+Description: Loads clinical and gene expression data, performs exploratory data visualization 
+             (histograms, boxplots, count plots, and a heatmap with clustering), processes the gene expression data,
+             and finally combines both datasets.
+"""
 
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-#IMPORTAR DATOS 
 
-#Cargar base de datos
-
-clinical_path = "C:/Users/HP/Documents/Master UNIR/TFM/colorectal-cancer-data.csv"
-clinical_data = pd.read_csv(clinical_path)
-df_gene_path= "C:/Users/HP/Documents/Master UNIR/TFM/gene-expression-data.csv"
-df_gene = pd.read_csv(df_gene_path)
-
-
-
-#CLINICAL DATA 
-
-print(clinical_data.info())
-
-
-# VISUALIZACIÓN 
-
-# Variables categoricas 
-
-variables_num = ['Age (in years)', 'DFS (in months)']
-
-# basic stats
-clinical_data[variables_num].describe(percentiles=[0.1,0.25,0.5,0.75,0.9])
-
-# Configurar estilo y paleta de colores
-sns.set_style('whitegrid')       # Estilo de la cuadrícula
-sns.set_palette('Set2')          # Paleta de colores (puedes cambiarla por otra)
-
-for f in variables_num:
-    # Crear figura y ejes
-    fig, axes = plt.subplots(nrows=2, ncols=1, figsize=(10, 8))
+def load_clinical_data(clinical_path):
+    """
+    Load clinical data from a CSV file.
     
-    # Histograma con Seaborn
-    sns.histplot(
-        data=clinical_data, 
-        x=f, 
-        ax=axes[0], 
-        kde=True,               # Agrega la curva de densidad
-        color='skyblue'         # Color del histograma (puedes cambiarlo)
-    )
-    axes[0].set_title(f"Histograma y Curva de Desidad {f}", fontsize=14, fontweight='bold')
-    axes[0].set_xlabel("")                 # Eliminar etiqueta de eje X
-    axes[0].set_ylabel("Frecuencia", fontsize=12)
+    Returns:
+        clinical_data (pd.DataFrame)
+    """
+    clinical_data = pd.read_csv(clinical_path)
+    print(clinical_data.info())
+    return clinical_data
+
+
+def load_gene_expression_data(gene_path):
+    """
+    Load gene expression data from a CSV file.
     
-    # Boxplot con Seaborn (horizontal)
-    sns.boxplot(
-        data=clinical_data, 
-        x=f, 
-        ax=axes[1],
-        color='skyblue'
-    )
-    axes[1].set_title(f"Boxplot {f}", fontsize=14, fontweight='bold')
-    axes[1].set_xlabel("")
+    Returns:
+        gene_data (pd.DataFrame)
+    """
+    gene_data = pd.read_csv(gene_path)
+    print(gene_data.info())
+    return gene_data
+
+
+def visualize_numeric_variables(df, variables):
+    """
+    Visualize numeric variables with histograms and boxplots.
+    """
+    sns.set_style('whitegrid')
+    sns.set_palette('Set2')
     
-    # Ajustar el espacio entre gráficos
+    for var in variables:
+        fig, axes = plt.subplots(nrows=2, ncols=1, figsize=(10, 8))
+        
+        # Histogram with density plot
+        sns.histplot(data=df, x=var, ax=axes[0], kde=True, color='skyblue')
+        axes[0].set_title(f"Histogram and Density Plot for {var}", fontsize=14, fontweight='bold')
+        axes[0].set_xlabel("")
+        axes[0].set_ylabel("Frequency", fontsize=12)
+        
+        # Boxplot
+        sns.boxplot(data=df, x=var, ax=axes[1], color='skyblue')
+        axes[1].set_title(f"Boxplot for {var}", fontsize=14, fontweight='bold')
+        axes[1].set_xlabel("")
+        
+        plt.tight_layout()
+        plt.savefig(f'analysis_{var}.png', dpi=300, bbox_inches='tight')
+        plt.show()
+
+
+def visualize_categorical_variables(df, variables):
+    """
+    Visualize categorical variables using count plots.
+    """
+    sns.set_style("whitegrid")
+    sns.set_palette("Set2")
+    
+    fig, axes = plt.subplots(nrows=2, ncols=3, figsize=(15, 8))
+    
+    for i, var in enumerate(variables):
+        row = i // 3
+        col = i % 3
+        ax = axes[row, col]
+        sns.countplot(x=var, data=df, ax=ax, color='skyblue', width=0.4)
+        ax.set_title(f"Distribution of {var}", fontsize=12, fontweight='bold')
+        ax.set_xlabel("")
+        ax.set_ylabel("Frequency")
+        ax.set_xticklabels(ax.get_xticklabels(), rotation=30, ha='right')
+    
     plt.tight_layout()
-    
-    plt.savefig(f'analisis_{f}.png', dpi=300, bbox_inches='tight')   
- 
-    # Mostrar figura
+    plt.savefig('categorical_variables.png', dpi=300, bbox_inches='tight')
     plt.show()
 
 
-
-
-# Variables numericas 
-
-sns.set_style("whitegrid")
-sns.set_palette("Set2")
-
-variable_num = ['Dukes Stage', 'Gender', 'Location', 
-                'DFS event', 'Adj_Radio', 'Adj_Chem']
-
-# Crear la figura y la cuadrícula de subplots
-fig, axes = plt.subplots(nrows=2, ncols=3, figsize=(15, 8))
-
-
-
-for i, cat in enumerate(variable_num):
-    # Determinar la posición en la cuadrícula
-    row = i // 3
-    col = i % 3
+def process_gene_expression_data(gene_data):
+    """
+    Process gene expression data:
+      - Drop the first column.
+      - Transpose the DataFrame.
+      - Adjust column names and convert to numeric.
+      - Save the processed data.
+      
+    Returns:
+        processed_gene_data (pd.DataFrame)
+    """
+    # Drop the first column (assumed to be an index column)
+    gene_data = gene_data.drop(gene_data.columns[0], axis=1)
     
-    ax = axes[row, col]
+    # Transpose the data
+    gene_data = gene_data.transpose()
     
-    # Crear un countplot con un color específico y barras más estrechas
-    sns.countplot(
-        x=cat, 
-        data=clinical_data, 
-        ax=ax, 
-        color='skyblue',   # <--- Aquí forzamos el color de las barras
-        width=0.4
-    )
+    # Set the first row as header and drop it from the data
+    col_names = gene_data.iloc[0].tolist()
+    gene_data.columns = col_names
+    gene_data = gene_data.drop(gene_data.index[0])
     
-    ax.set_title(f"Distribución de {cat}", fontsize=12, fontweight='bold')
-    ax.set_xlabel("")
-    ax.set_ylabel("Frecuencia")
+    # Insert the index as a column 'ID_REF'
+    gene_data.insert(loc=0, column='ID_REF', value=gene_data.index)
+    gene_data = gene_data.reset_index(drop=True)
     
-    # Girar etiquetas del eje X si son largas
-    ax.set_xticklabels(ax.get_xticklabels(), rotation=30, ha='right')
-
-# Ajustar el espacio entre subplots
-plt.tight_layout()
-
-#Guardar imagen
-
-plt.savefig(f'variable_numerica.png', dpi=300, bbox_inches='tight')   
-
-
-# Mostrar la figura con todos los subplots en una imagen
-plt.show()
-
-
-
-# GENE EXPRESSION
-
-#Procesado 
-
-print(df_gene.info())
-
-df_gene = df_gene.drop(df_gene.columns[0], axis = 1) # eliminar primera columna (numeros)
-
-df_gene.head()
-
-# Trasponer datos
-
-df_gene = df_gene.transpose()
-
-
-# EXPLICACION DE ESTA PARTE 
-
-col_names = df_gene.iloc[0].tolist()
-df_gene.columns = col_names
-# now remove redundant first row
-df_gene = df_gene.drop(axis=0, index='ID_REF')
-# add ID_REF (as first column) by copying index
-df_gene.insert(loc=0, column='ID_REF', value=df_gene.index)
-# and reset index
-df_gene = df_gene.reset_index(drop=True)
-# convert to numerical
-features_gene_num = df_gene.columns.tolist()[1:]
-df_gene[features_gene_num] = df_gene[features_gene_num].astype(float)
-
-
-#Guardar excel final ya trasnpouesto
-df_gene.to_csv("gene_expression_data_t.csv", index=False, encoding='utf-8')
-
-
-
-
-# Visualización (heatmap) 
-
-
-# Supongamos que `expression_data` es un DataFrame de 64 filas (pacientes) y 2000 columnas (genes).
-# A veces se seleccionan menos genes (e.g., top 100 por varianza) para que el heatmap sea más legible.
-
-
-df_nuevo = df_gene.set_index('ID_REF')
-
-# Extraer top 100 genes más variables (ejemplo)
-variances = df_nuevo.var().sort_values(ascending=False)
-top_genes = variances.index[:5]
-data_top = df_nuevo[top_genes]
-
-# Crear un mapa de calor con clustering
-sns.clustermap(
-    data_top,
-    cmap="skyblue",
-    figsize=(12, 10),
-    row_cluster=True,     # Agrupar pacientes
-    col_cluster=True,     # Agrupar genes
-    standard_scale=1      # Escala cada columna (gen) para comparaciones
-)
-
-plt.savefig(f'heatmap.png', dpi=300, bbox_inches='tight')   
-
-plt.show()
-
+    # Convert remaining columns to numeric
+    feature_columns = gene_data.columns.tolist()[1:]
+    gene_data[feature_columns] = gene_data[feature_columns].astype(float)
     
+    # Save the processed gene expression data
+    gene_data.to_csv("gene_expression_data_processed.csv", index=False, encoding='utf-8')
     
+    return gene_data
 
-#Combinar las dos bases de datos 
 
-df_final = clinical_data.join(other=df_gene.set_index('ID_REF'), on='ID_REF', how='left')
-print(df_final.info())
+def visualize_heatmap(gene_data, top_n=5, output_file='heatmap.png'):
+    """
+    Visualize a clustered heatmap of the top variable genes.
+    """
+    # Set 'ID_REF' as index
+    gene_data_indexed = gene_data.set_index('ID_REF')
+    
+    # Calculate variance for each gene and select top_n genes
+    variances = gene_data_indexed.var().sort_values(ascending=False)
+    top_genes = variances.index[:top_n]
+    data_top = gene_data_indexed[top_genes]
+    
+    sns.clustermap(data_top, cmap="skyblue", figsize=(12, 10), row_cluster=True,
+                   col_cluster=True, standard_scale=1)
+    plt.savefig(output_file, dpi=300, bbox_inches='tight')
+    plt.show()
 
-df_final.to_csv("df_final.csv", index=False, encoding='utf-8')
+
+def combine_datasets(clinical_data, gene_data):
+    """
+    Combine clinical data with gene expression data using the 'ID_REF' column.
+    
+    Returns:
+        combined_df (pd.DataFrame)
+    """
+    gene_data_indexed = gene_data.set_index('ID_REF')
+    combined_df = clinical_data.join(gene_data_indexed, on='ID_REF', how='left')
+    print(combined_df.info())
+    combined_df.to_csv("combined_data.csv", index=False, encoding='utf-8')
+    return combined_df
+
+
+def main():
+    # Define file paths (update as needed)
+    clinical_path = "/colorectal-cancer-data.csv"
+    gene_path = "/gene-expression-data.csv"
+    
+    # Load datasets
+    clinical_df = load_clinical_data(clinical_path)
+    gene_df = load_gene_expression_data(gene_path)
+    
+    # Visualize numeric clinical variables
+    numeric_vars = ['Age (in years)', 'DFS (in months)']
+    visualize_numeric_variables(clinical_df, numeric_vars)
+    
+    # Visualize categorical clinical variables
+    categorical_vars = ['Dukes Stage', 'Gender', 'Location', 'DFS event', 'Adj_Radio', 'Adj_Chem']
+    visualize_categorical_variables(clinical_df, categorical_vars)
+    
+    # Process gene expression data and create a heatmap
+    processed_gene_df = process_gene_expression_data(gene_df)
+    visualize_heatmap(processed_gene_df, top_n=5, output_file='heatmap.png')
+    
+    # Combine clinical and gene expression data
+    combine_datasets(clinical_df, processed_gene_df)
+
+
+if __name__ == '__main__':
+    main()
+
+ 
+  
+
+
