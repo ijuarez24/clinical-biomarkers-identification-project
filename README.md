@@ -88,9 +88,9 @@ This chapter focuses on analyzing publicly available datasets related to colorec
 
 Two datasets were used:
 
-- Colorectal Cancer Clinical Data: Contains information from 62 patients who underwent tumor resection, including age, Dukes staging, tumor location, treatment details, and disease-free survival (DFS) → ```colorecta-cancer-data.csv```.
+- Colorectal Cancer Clinical Data: Contains information from 62 patients who underwent tumor resection, including age, Dukes staging, tumor location, treatment details, and disease-free survival (DFS) → ```colorecta-cancer-data.csv```
 
-- Gene Expression Data: Includes gene expression levels for approximately 2000 genes in the same patients, preprocessed using a log₂ transformation → ```gene-expression-data.csv```. 
+- Gene Expression Data: Includes gene expression levels for approximately 2000 genes in the same patients, preprocessed using a log₂ transformation → ```gene-expression-data.csv```
 
 ### Data Preprocessing and Visualization
 
