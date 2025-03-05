@@ -9,6 +9,7 @@ This repository contains the code and resources for my Master's Thesis project i
 - [Real Data Base](#real-data-base)
 - [Current Status](#current-status)
 - [Contact](#contact)
+- [Genetic Analysis](#genetic-analysis)
 
 
 
@@ -142,6 +143,9 @@ This study demonstrates the potential of ML in colorectal cancer prognosis by in
 - Applying deep learning techniques for enhanced predictive accuracy.
 
 By leveraging bioinformatics and AI, this approach contributes to precision medicine, supporting personalized treatment strategies for colorectal cancer patients.
+
+
+## Genetic Analysis
 
 
 
