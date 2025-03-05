@@ -40,7 +40,7 @@ clinical-biomarkers-identification-project/
 
 ## Synthetic Data Base
 
-This project applies supervised learning models to predict the prognosis of colorectal cancer based on clinical data, specifically focusing on genetic mutations associated with the disease.
+This project applies supervised learning models to predict the prognosis of colorectal cancer based on clinical data, specifically focusing on genetic mutations associated with the disease. The code for this analysis is available in ```synthetic-data.py```
 
 ### Overview
 A synthetic dataset was created for this study, including patient demographics and key clinical biomarkers. The dataset simulates real-world scenarios to evaluate different machine learning models. The biomarkers considered include:
@@ -147,7 +147,9 @@ By leveraging bioinformatics and AI, this approach contributes to precision medi
 
 
 ## Genetic Analysis
+As a final step, an analysis was performed to identify which PCA components are most correlated with key clinical variables: treatment resistance ("Adj_Chem") and disease relapse ("DFS event"). The goal was to extract the genes that contribute most to these principal components, potentially identifying those involved in relevant biological processes.
 
+Since gene IDs (e.g., 1552309_a_at) do not correspond directly to gene names, further annotation is required using official databases such as UniProt or PubMed. Due to data limitations, precise gene identification remains uncertain.
 
 
 ## Current Status 
