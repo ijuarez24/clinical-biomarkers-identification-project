@@ -2,6 +2,34 @@
 
 This repository contains the code and resources for my Master's Thesis project in Bioinformatics. The focus of this project is the identification of clinical markers in colorectal cancer. 
 
+This project follows a structured workflow to process, analyze, and interpret  clinical data:  
+
+1️⃣ **Data Collection** → Raw datasets (`gene-expression-data.csv` & `colorectal-cancer-data.csv`) are loaded.  
+2️⃣ **Data Preprocessing** → Data is visualized and cleaned using **Pandas**.  
+3️⃣ **Dimensionality Reduction** → **Principal Component Analysis (PCA)** is applied to determine the optimal number of components.  
+4️⃣ **Machine Learning Models** → Various ML algorithms are implemented using the reduced-dimensional dataset.  
+5️⃣ **Results Interpretation** → Model performance is evaluated, and key insights are extracted.  
+6️⃣ **Conclusions** → Findings are summarized, and future directions are discussed.  
+
+
+### Technologies Used  
+
+- **Python** (NumPy, Pandas, Scikit-Learn, Matplotlib, Seaborn)  
+- **Machine Learning** (Logistic Regression, SVM, Random Forest)  
+- **Dimensionality Reduction** (PCA)  
+
+### Pipeline Diagram  
+
+```mermaid
+graph TD;
+    A[Raw Data: gene-expression-data.csv & colorectal-cancer-data.csv] --> B[Data Visualization & Cleaning (Pandas)]
+    B --> C[Principal Component Analysis (PCA)]
+    C --> D[ML Model Implementation]
+    D --> E[Results Interpretation]
+    E --> F[Conclusions & Insights]
+```
+
+
 ## Table of Contents
 - [General Information](#general-information)
 - [Project Structure](#project-structure)
