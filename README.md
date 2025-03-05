@@ -7,9 +7,10 @@ This repository contains the code and resources for my Master's Thesis project i
 - [Project Structure](#project-structure)
 - [Synthetic Data Base](#synthetic-data-base)
 - [Real Data Base](#real-data-base)
+- [Genetic Analysis](#genetic-analysis)
 - [Current Status](#current-status)
 - [Contact](#contact)
-- [Genetic Analysis](#genetic-analysis)
+
 
 
 
