@@ -28,9 +28,11 @@ clinical-biomarkers-identification-project/
 │ ├── colorectal-cancer-data.csv
 │ ├── df-final.csv
 ├── code/
-│ ├── database-sintetica.py
+│ ├── synthetic-data.py
 │ ├── import-data.py
-│ ├── database-real.py
+│ ├── pca-variance.py
+│ ├── pca-ml.py
+│ ├── genetic-analysis.py
 └── README.md
 ````
 
