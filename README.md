@@ -23,8 +23,8 @@ This project follows a structured workflow to process, analyze, and interpret  c
 ## Table of Contents
 - [General Information](#general-information)
 - [Project Structure](#project-structure)
-- [Synthetic Dataset](#synthetic-data-base)
-- [Real Dataset](#real-data-base)
+- [Synthetic Dataset](#synthetic-dataset)
+- [Real Dataset](#real-dataset)
 - [Genetic Analysis](#genetic-analysis)
 - [Current Status](#current-status)
 - [Contact](#contact)
