@@ -1,4 +1,4 @@
-# Master´s Thesis in Bioinformatics: Identification of clinical biomarkers in colorectal cancer
+# Identification of clinical biomarkers in colorectal cancer
 
 This repository contains the code and resources for my Master's Thesis project in Bioinformatics. The focus of this project is the identification of clinical markers in colorectal cancer. 
 
